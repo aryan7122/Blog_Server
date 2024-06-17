@@ -1,6 +1,5 @@
-// routes/userRoutes.js
 import express from 'express';
-import { register, login, protect, authorize } from '../controllers/userController.js';
+import { register, login, getAllUsers, deleteUser, updateUserRole, protect, authorize } from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -11,5 +10,10 @@ router.post('/login', login);
 router.get('/admin', protect, authorize('Admin'), (req, res) => {
     res.status(200).json({ message: 'Admin content' });
 });
+
+// Protected routes
+router.get('/',  getAllUsers);
+router.delete('/:id', deleteUser);
+router.put('/:id',updateUserRole);
 
 export default router;
