@@ -5,6 +5,8 @@ import connectToMongo from './config/db.js';
 import dotenv from 'dotenv';
 import postRoutes from './routes/postRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import subscriptionRoutes from './routes/subscriptionRoutes.js';
+
 const app = express();
 dotenv.config();
 
@@ -21,6 +23,9 @@ app.get('/', (req, res) => {
 app.use('/api', postRoutes);
 //use register
 app.use('/api/users', userRoutes);
+// subscribe
+app.use('/api', subscriptionRoutes);
+
 
 
 const PORT = process.env.PORT || 5000;
