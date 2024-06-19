@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import postRoutes from './routes/postRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import subscriptionRoutes from './routes/subscriptionRoutes.js';
+import subscriberRouter from './routes/subscriberRouter.js';
 
 const app = express();
 dotenv.config();
@@ -25,6 +26,8 @@ app.use('/api', postRoutes);
 app.use('/api/users', userRoutes);
 // subscribe
 app.use('/api', subscriptionRoutes);
+//subscriberRouter
+app.use('/api', subscriberRouter);
 
 
 

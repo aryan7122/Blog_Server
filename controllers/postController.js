@@ -16,7 +16,14 @@ export const createPost = async (req, res) => {
 
         // Fetch all subscribers
         const subscribers = await Subscriber.find();
-        const emailList = subscribers.map(subscriber => subscriber.email);
+        const subscriberEmailList = subscribers.map(subscriber => subscriber.email);
+
+        // Fetch all users
+        const users = await User.find();
+        const userEmailList = users.map(user => user.email);
+
+        // Combine both email lists
+        const emailList = [...subscriberEmailList, ...userEmailList];
 
         // Prepare email content
         const emailSubject = `New Post Published: ${title}`;
